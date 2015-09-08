@@ -3,6 +3,8 @@ import shutil
 import subprocess
 import sys
 
+import virtualenv
+
 import vcs
 
 lockfile = None
@@ -45,7 +47,7 @@ def setup_virtualenv():
     virtualenv_path = os.path.join(here, "_virtualenv")
 
     if not os.path.exists(virtualenv_path):
-        subprocess.check_call(["virtualenv", virtualenv_path])
+        virtualenv.create_environment(virtualenv_path)
 
     activate_path = os.path.join(virtualenv_path, "bin", "activate_this.py")
 
